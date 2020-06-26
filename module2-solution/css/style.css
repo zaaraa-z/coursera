@@ -6,6 +6,7 @@
   h1 {
     margin: 30px auto 50px auto;
     text-align: center;
+    font-size: 1.75rem;
   }
 
   .row {
@@ -20,7 +21,6 @@
 
   p {
     border: 1px solid black;
-    /* width: 95%; */
     padding: 40px 15px 15px 15px;
     margin: 0 10px 20px 10px;
     background-color: cornflowerblue;
@@ -31,19 +31,21 @@
     position: absolute;
     top: 0;
     right: 10px;
-    height: 30px;
+    height: 32px;
     width: 120px;
     text-align: center;
-    line-height: 26px;
+    line-height: 29px;
     font-weight: 600;
+    font-size: 1.25rem;
   }
   .t-1 {
     background-color: darkkhaki;
   }
   .t-2 {
-    background-color: cadetblue;
+    background-color: rgb(146, 211, 137);
   }
   .t-3 {
+    color: white;
     background-color: darkorchid;
   }
 
