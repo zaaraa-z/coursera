@@ -1,39 +1,117 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <title>Module3-Solution</title>
     </head>
 
     <body>
-        <h1>dfdgfdgfgfggff</h1>
-        <div class="row">
-            <div class="col-md-6 col-lg-4 section">
-                <div class="title t-1">Chicken</div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quae sequi
-                     asperiores, vero inventore veniam quasi excepturi perferendis est corporis
-                      ullam odio aut ipsam accusamus sunt eius et. Maiores, placeat!
-                </p>
-            </div>
+        <header>
+            <nav class="navbar navbar-light container-fluid pb-0">
+                <a href="#" class="navbar-brand text-white">
+                    <h1>Food, LLC</h1>
+                </a>
+                <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#dropdown-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="col-md-6 col-lg-4 section">
-                <div class="title t-2">Beef</div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quae sequi
-                     asperiores, vero inventore veniam quasi excepturi perferendis est corporis
-                      ullam odio aut ipsam accusamus sunt eius et. Maiores, placeat!
-                </p>
-            </div>
+                <div class="collapse navbar-collapse d-md-none" id="dropdown-menu">
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item">
+                            <a href="#chicken" class="nav-link">Chicken</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#beef" class="nav-link">Beef</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#sushi" class="nav-link">Sushi</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
 
-            <div class="col-lg-4 section">
-                <div class="title t-3">Sushi</div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quae sequi
-                     asperiores, vero inventore veniam quasi excepturi perferendis est corporis
-                      ullam odio aut ipsam accusamus sunt eius et. Maiores, placeat!
-                </p>
-            </div>
+        <div class="main-content container-fluid">
+            <h2 class="text-center my-4 pb-4">Our Menu</h2>
+            <section class="row mx-3">
+                <div class="text-col col-12 p-2 mb-4">
+                    <h4 class="text-center" id="chicken">Chicken</h4>
+                    <p class="text-justify px-3">
+                        Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.
+                        Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.
+                    </p>
+
+                    <h4 class="text-center mt-4" id="beef">Beef</h4>
+                    <p class="text-justify px-3">
+                        Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        ia
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.
+                    </p>
+
+                    <h4 class="text-center mt-4" id="sushi">Sushi</h4>
+                    <p class="text-justify px-3">
+                        Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor,
+                        metus vel.Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod,
+                        iaculis eu lacus nun
+                    </p>
+                </div>
+            </section>
         </div>
 
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>
 </html>
