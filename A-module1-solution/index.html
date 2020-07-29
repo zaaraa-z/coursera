@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app= "LunchCheck">
+	<head>
+		<meta charset="uft-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="angular.min.js"></script>
+		<script src="app.js"></script>
+		<title>MOD1_Assignment</title>
+	</head>
+	<body>
+		<div ng-controller = "LunchCheckController">
+		<h1>Enter the Food items separated by commas</h1>
+		<input type="text" ng-model="dishes">
+		<button ng-click="countdishes()">Check if too Much</button>
+		<div>{{message}}</div>
+	</div>
+	</body>
+</html>
