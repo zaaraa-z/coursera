@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+<body ng-app="NarrowItDownApp">
+   <div class="container" ng-controller="NarrowItDownController as ctrl">
+     <div class="seacrhDiv">
+        <h1>Narrow Down Your Chinese Menu Choice</h1>
+        <div class="form-group">
+          <input type="text" placeholder="Search term" class="form-control" ng-model="ctrl.searchTerm">
+        </div>
+        <div class="form-group narrow-button">
+          <button class="btn btn-primary" ng-click="ctrl.narrowDown(ctrl.searchTerm)">Narrow It Down For Me!</button>
+        </div>
+      </div>
+      <div>
+    <!--<div>{{ctrl.found}}</div>-->
+    <!-- found-items should be implemented as a component -->
+      <found-items found-array="ctrl.found" on-remove="ctrl.removeItem(index)" items-in-list="ctrl.showMenuItemsTable()"  click="ctrl.firstClick()"></found-items>
+</div>
+  </div>
+</body>
+</html>
