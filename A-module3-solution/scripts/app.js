@@ -1,99 +1,108 @@
-(function(){
+(function() {
     'use strict';
-    angular.module('NarrowItDownApp',[])
-    .controller('NarrowItDownController',NarrowItDownController)
-    .service('MenuSearchService', MenuSearchService)
-    .directive('foundItems',FoundItems)
-    .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
-
-    
-    function FoundItems(){
-        var ddo = {
-            templateUrl:'foundItems.html',
-            scope:{
-                foundArray:'<',
-                onRemove:'&',
-                itemsInList:'&',
-                click:'&'
-            },
-            link:MenuListDirectiveLink
-        };
-        return ddo;
-    }
-
-    function MenuListDirectiveLink(scope, element, attrs, controller){
-
-        var elem=element.find("div.resultTable");
-        var errorElem=element.find("div.error");
-        scope.$watch('itemsInList()',function(newValue,oldValue){
-            if(newValue===true){
-                elem.slideDown();
-            }else{
-                elem.slideUp();
-                errorElem.css("display","block");
-            }
-        });
-    }
-
-    NarrowItDownController.$inject=['MenuSearchService'];
-    function NarrowItDownController(MenuSearchService){
-        var ctrl=this;
-        ctrl.searchTerm="";
-        ctrl.found=[];
-        ctrl.click=0;
-        ctrl.firstClick=function(){
-            if(ctrl.click===0){
-                return true;
-            }else{
-                return false;
-            }
+  
+    angular
+      .module('NarrowItDownApp', [])
+      .controller('NarrowItDownController', NarrowItDownController)
+      .service('MenuSearchService', MenuSearchService)
+      .directive('foundItems', foundItems)
+      .directive('itemsLoaderIndicator', itemsLoaderIndicator)
+      .constant('API', {
+        url: 'https://davids-restaurant.herokuapp.com',
+        endpoint: {
+          items: '/menu_items.json'
         }
-        ctrl.narrowDown=function(search){
-            ctrl.click=ctrl.click+1;
-            var promise=MenuSearchService.getMatchedMenuItems(search);
-            promise.then(function(resultArray){
-                ctrl.found=resultArray;
-                console.log("Search list:",ctrl.found);
-                ctrl.searchTerm="";
-            });
-        };
-        ctrl.removeItem=function(itemIndex){
-            MenuSearchService.removeUnwantedItem(itemIndex);
-        };
-        ctrl.showMenuItemsTable=function(){
-                if(ctrl.found.length===0){
-                    return false;
-                }else{
-                    return true;
-            }
+      });
+  
+    NarrowItDownController.$inject = ['MenuSearchService'];
+    MenuSearchService.$inject = ['$http', '$filter', 'API'];
+  
+    function foundItems() {
+      var ddo = {
+        restrict: 'E',
+        templateUrl: 'foundList.html',
+        scope: {
+          items: '<',
+          onRemove: '&'
         }
+      };
+  
+      return ddo;
     }
-
-    MenuSearchService.$inject=['ApiBasePath','$http'];
-    function MenuSearchService(ApiBasePath,$http){
-        var service=this;
-        var search_list=[];
-        service.getMatchedMenuItems=function(searchItem){
-           return $http({
-            method:"GET",
-            url:(ApiBasePath+"/menu_items.json")
-           })
-           .then(function(response){
-            search_list=[];
-            var menu_items=response.data.menu_items;
-            var i;
-            for(i=0;i<menu_items.length;i++){
-                if(menu_items[i].description.indexOf(searchItem.toLowerCase())>0){
-                    search_list.push(menu_items[i]);
-                }
+  
+    function itemsLoaderIndicator() {
+      var ddo = {
+        restrict: 'E',
+        templateUrl: 'loader/itemsloaderindicator.template.html',
+        link: function(scope, element) {
+          scope.$watch('narrowItDown.isLoading', function(newValue, oldValue) {
+            if (newValue === true) {
+              var loadDiv = element.find('div');
+              loadDiv.css('display', 'block');
             }
-            console.log("Search list:",search_list);
-            return search_list;
-           });
-        };
-        service.removeUnwantedItem=function(itemIndex){
-            search_list.splice(itemIndex,1);
-        };
+            else {
+              var loadDiv = element.find('div');
+              loadDiv.css('display', 'none');
+            }
+          });
+        }
+      };
+  
+      return ddo;
     }
-
-})()
+  
+    function NarrowItDownController(MenuSearchService) {
+      var narrowItDown = this;
+  
+      narrowItDown.searchTerm = '';
+      narrowItDown.found = [];
+      narrowItDown.shouldDisplayMessage = false;
+      narrowItDown.isLoading = false;
+  
+      narrowItDown.doSearchTerm = function() {
+        if(narrowItDown.searchTerm) {
+          narrowItDown.isLoading = true;
+          MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm)
+            .then(checkResponse);
+        } else {
+          narrowItDown.found = [];
+          narrowItDown.isLoading = false;
+          narrowItDown.shouldDisplayMessage = true;
+        }
+      };
+  
+      narrowItDown.removeItem = function(itemIndex) {
+        console.log(itemIndex);
+        narrowItDown.found.splice(itemIndex, 1);
+      };
+  
+      function resetSearch() {
+        narrowItDown.isLoading = false;
+        narrowItDown.shouldDisplayMessage = false;
+        narrowItDown.searchTerm = '';
+      }
+  
+      function checkResponse(response) {
+        resetSearch();
+        narrowItDown.found = response;
+        if(!(narrowItDown.found.length > 0)) {
+          narrowItDown.shouldDisplayMessage = true;
+        }
+      }
+  
+    }
+  
+    function MenuSearchService($http, $filter, API) {
+      var menuSearch = this;
+  
+      menuSearch.getMatchedMenuItems = function(searchTerm) {
+        return $http.get(API.url + API.endpoint.items)
+          .then(function(response) {
+            var foundItems = $filter('filter')(response.data.menu_items, {description: searchTerm});
+            foundItems = $filter('orderBy')(foundItems, 'name');
+            return foundItems;
+          });
+      };
+    }
+  })();
+  

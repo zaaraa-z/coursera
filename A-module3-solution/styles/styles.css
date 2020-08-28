@@ -4,10 +4,20 @@ h1 {
 input[type="text"] {
   width: 200px;
   float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.results {
+  clear: both;
+}
+.item {
+  min-height: 430px;
 }
 .narrow-button {
   float: left;
-  margin-left: 10px;
 }
 .loader {
   display: none;
