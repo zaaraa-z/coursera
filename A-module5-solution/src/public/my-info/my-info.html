@@ -1,0 +1,55 @@
+
+<div class="container">
+  <table id="user-info-table" ng-if="myInfoCtrl.userPref != undefined" class="table table-borderless">
+    <tbody>
+      <tr>
+        <td>First name: </td>
+        <!-- <td>{{signUpForm.firstName}}</td> -->
+        <td>{{myInfoCtrl.userPref.firstName}}</td>
+      </tr>
+
+      <tr>
+      <td>Last name: </td>
+      <td>{{myInfoCtrl.userPref.lastName}}</td>
+      </tr>
+
+      <tr>
+        <td>Email: </td>
+        <td>{{myInfoCtrl.userPref.email}}</td>
+      </tr>
+
+      <tr>
+        <td>Phone: </td>
+        <td>{{myInfoCtrl.userPref.phone}}</td>
+      </tr>
+
+      <tr>
+        <td>Favourite: </td>
+        <td>
+          <menu-item id="user-info-menu-item" menu-item="myInfoCtrl.userPref.favouriteMenuItem" class="ng-isolate-scope">
+            <div class="menu-item-tile col-md-6">
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="menu-item-photo">
+                    <div>{{myInfoCtrl.userPref.favourite}}</div>
+                    <img class="img-responsive" width="250" height="150" ng-src="https://nex3z-restaurant.herokuapp.com/images/F3.jpg" alt="Szechuan Beef" src="https://nex3z-restaurant.herokuapp.com/images/F3.jpg">
+                  </div>
+                  <div class="menu-item-price">$11.45<span> pint</span> $15.45 <span>large</span></div>
+                </div>
+                <div class="menu-item-description col-sm-7">
+                  <h3 class="menu-item-title">Szechuan Beef</h3>
+                  <p class="menu-item-details">beef sauteed with carrots and celery, in a spicy Szechuan sauce</p>
+                </div>
+              </div>
+              <hr class="visible-xs">
+            </div>
+          </menu-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ng-if="myInfoCtrl.userPref === undefined" id="user-info-not-signed-msg"> 
+    Not Signed Up Yet. Sign up Now!
+  </div>
+</div>
